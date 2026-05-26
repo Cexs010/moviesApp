@@ -3,7 +3,7 @@ import { MoviesDbResponse } from "../../../infrastructure/interfaces/movie-db.re
 import { MovieMapper } from "../../../infrastructure/mappers/movie.mapper";
 import { Movie } from "../../entities/movie.entity";
 
-export const topRatedMovies = async (fetcher: HttpAdapter): Promise<Movie[]> => {
+export const topRatedMoviesUseCase = async (fetcher: HttpAdapter): Promise<Movie[]> => {
     try {
         const topRated = await fetcher.get<MoviesDbResponse>('/top_rated');
         return topRated.results.map(MovieMapper.fromMovieDBResultToEntity)
