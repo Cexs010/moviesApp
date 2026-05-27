@@ -1,9 +1,18 @@
-import { Text, View } from 'react-native';
+import { ScrollView, Text, View } from 'react-native';
+import { globalStyles } from '../../theme/theme';
+import { useMovies } from '../../hooks/useMovies';
+import { PosterCarousel } from '../../components/movies/PosterCarousel';
 
 const HomeScreen = () => {
+  const { isLoading, nowPlaying } = useMovies();
+
+  if (isLoading) {
+    return <Text>Cargando contenido ...</Text>;
+  }
+
   return (
-    <View>
-      <Text>Home</Text>
+    <View style={globalStyles.container}>
+      <PosterCarousel movies={nowPlaying} />
     </View>
   );
 };
