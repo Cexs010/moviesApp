@@ -2,18 +2,36 @@ import { ScrollView, Text, View } from 'react-native';
 import { globalStyles } from '../../theme/theme';
 import { useMovies } from '../../hooks/useMovies';
 import { PosterCarousel } from '../../components/movies/PosterCarousel';
+import { HorizontalCarousel } from '../../components/movies/HorizontalCarousel';
 
 const HomeScreen = () => {
-  const { isLoading, nowPlaying } = useMovies();
+  const {
+    isLoading,
+    nowPlaying,
+    popular,
+    topRated,
+    upComing,
+    popularNextPage,
+  } = useMovies();
 
   if (isLoading) {
     return <Text>Cargando contenido ...</Text>;
   }
 
   return (
-    <View style={globalStyles.container}>
+    <ScrollView
+      style={globalStyles.container}
+      contentContainerStyle={{ paddingBottom: 32 }}
+    >
       <PosterCarousel movies={nowPlaying} />
-    </View>
+      <HorizontalCarousel
+        movies={popular}
+        title="Populares"
+        loadNextPage={popularNextPage}
+      />
+      <HorizontalCarousel movies={topRated} title="Mejor Calificadas" />
+      <HorizontalCarousel movies={upComing} title="Próximamente" />
+    </ScrollView>
   );
 };
 
