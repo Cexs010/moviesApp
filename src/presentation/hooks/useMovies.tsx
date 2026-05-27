@@ -1,7 +1,9 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { Movie } from '../../core/entities/movie.entity';
 import * as UseCases from '../../core/use-cases';
 import { movieDbFetcher } from '../../config/adapters/movieDb.adapter';
+
+let popularPageNumber = 1;
 
 export const useMovies = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -9,10 +11,6 @@ export const useMovies = () => {
   const [upComing, setUpComing] = useState<Movie[]>([]);
   const [popular, setPopular] = useState<Movie[]>([]);
   const [topRated, setTopRated] = useState<Movie[]>([]);
-
-  useEffect(() => {
-    initialLoad();
-  }, []);
 
   const initialLoad = async () => {
     try {
@@ -37,11 +35,24 @@ export const useMovies = () => {
     }
   };
 
+  useEffect(() => {
+    initialLoad();
+  }, []);
+
+  const popularNextPage = useCallback(async () => {
+    popularPageNumber++;
+    const popularMovies = await UseCases.popularMoviesUseCase(movieDbFetcher, {
+      page: popularPageNumber,
+    });
+    setPopular(prev => [...prev, ...popularMovies]);
+  }, []);
+
   return {
     isLoading,
     nowPlaying,
     upComing,
     popular,
     topRated,
+    popularNextPage,
   };
 };
