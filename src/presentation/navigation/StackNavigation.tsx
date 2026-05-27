@@ -12,9 +12,9 @@ export type RootStackParams = {
 const Stack = createNativeStackNavigator<RootStackParams>();
 
 export const StackNavigation = () => {
-  const { top } = useSafeAreaInsets();
+  const { top, bottom } = useSafeAreaInsets();
   return (
-    <View style={{ flex: 1, marginTop: top }}>
+    <View style={{ flex: 1, marginTop: top, marginBottom: bottom }}>
       <Stack.Navigator
         screenOptions={{
           headerShown: false,
