@@ -12,7 +12,7 @@ interface Props {
   height?: number;
 }
 
-export const MoviePoster = ({ movie }: Props) => {
+export const MoviePoster = ({ movie, width = 190, height = 300 }: Props) => {
   const navigation = useNavigation<NavigationProp<RootStackParams>>();
   const { animatedStyle, onPressIn, onPressOut } = useMoviePosterAnimation();
 
@@ -23,7 +23,13 @@ export const MoviePoster = ({ movie }: Props) => {
       onPressOut={onPressOut}
       style={{ paddingHorizontal: 7, paddingVertical: 7 }}
     >
-      <Animated.View style={[globalStyles.imageContainer, animatedStyle]}>
+      <Animated.View
+        style={[
+          globalStyles.imageContainer,
+          animatedStyle,
+          { width: width, height: height },
+        ]}
+      >
         <Image style={globalStyles.image} source={{ uri: movie.poster }} />
       </Animated.View>
     </Pressable>
