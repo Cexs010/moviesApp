@@ -1,5 +1,5 @@
 export interface MoviesDbResponse {
-    dates: Dates;
+    dates?: Dates;
     page: number;
     results: Result[];
     total_pages: number;
