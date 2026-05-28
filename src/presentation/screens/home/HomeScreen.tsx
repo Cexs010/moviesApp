@@ -3,6 +3,7 @@ import { globalStyles } from '../../theme/theme';
 import { useMovies } from '../../hooks/useMovies';
 import { PosterCarousel } from '../../components/movies/PosterCarousel';
 import { HorizontalCarousel } from '../../components/movies/HorizontalCarousel';
+import { FullScreenLoader } from '../../components/loaders/FullScreenLoader';
 
 const HomeScreen = () => {
   const {
@@ -15,7 +16,7 @@ const HomeScreen = () => {
   } = useMovies();
 
   if (isLoading) {
-    return <Text>Cargando contenido ...</Text>;
+    return <FullScreenLoader />;
   }
 
   return (
