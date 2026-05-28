@@ -2,7 +2,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from '../screens/home/HomeScreen';
 import DetailsScreen from '../screens/details/DetailsScreen';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { View } from 'react-native';
+import { Platform, View } from 'react-native';
 
 export type RootStackParams = {
   home: undefined;
@@ -18,7 +18,9 @@ export const StackNavigation = () => {
       <Stack.Navigator
         screenOptions={{
           headerShown: false,
-          animation: 'fade_from_bottom',
+          presentation: Platform.OS === 'ios' ? 'modal' : 'card',
+          animation:
+            Platform.OS === 'android' ? 'slide_from_bottom' : 'default',
         }}
       >
         <Stack.Screen
