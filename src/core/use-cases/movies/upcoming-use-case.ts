@@ -1,5 +1,5 @@
 import { HttpAdapter } from "../../../config/adapters/http/http.adapter"
-import { MoviesDbResponse } from "../../../infrastructure/interfaces/movie-db.response";
+import { MoviesDbResponse } from "../../../infrastructure/interfaces/movies-db.response";
 import { MovieMapper } from "../../../infrastructure/mappers/movie.mapper";
 import type { Movie } from "../../entities/movie.entity"
 

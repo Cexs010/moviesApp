@@ -1,5 +1,5 @@
 import { Movie } from "../../core/entities/movie.entity";
-import type { Result } from "../interfaces/movie-db.response";
+import type { Result } from "../interfaces/movies-db.response";
 
 export class MovieMapper {
     static fromMovieDBResultToEntity(result: Result): Movie {
