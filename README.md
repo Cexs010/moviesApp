@@ -1,6 +1,13 @@
 # MoviesApp
 
+Versión actual: v0.1.0
+
 Aplicación móvil desarrollada con React Native para explorar películas, consultar detalles, buscar títulos y descubrir contenido popular.
+
+## Estado del proyecto
+
+Actualmente la aplicación se encuentra en fase beta (v0.1.0).
+Las funcionalidades principales están implementadas, pero el diseño y arquitectura seguirán evolucionando en futuras versiones.
 
 ## Características
 
