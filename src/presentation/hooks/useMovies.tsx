@@ -29,7 +29,7 @@ export const useMovies = () => {
       setPopular(popularMovies);
       setTopRated(topRatedMovies);
     } catch (error) {
-      console.error(error);
+      throw new Error('Error obtaining movies');
     } finally {
       setIsLoading(false);
     }
