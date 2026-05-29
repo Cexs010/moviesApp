@@ -7,7 +7,7 @@ import {
   Pressable,
 } from 'react-native';
 import { globalStyles } from '../../theme/theme';
-import { useNavigation } from '@react-navigation/native';
+import { BackButton } from './BackButton';
 
 interface Props {
   poster: string;
@@ -17,7 +17,7 @@ interface Props {
 
 export const MovieHeader = ({ poster, originalTitle, title }: Props) => {
   const { height: screenHeight } = useWindowDimensions();
-  const navigation = useNavigation();
+
   return (
     <>
       <View
@@ -36,11 +36,7 @@ export const MovieHeader = ({ poster, originalTitle, title }: Props) => {
         <Text style={globalStyles.headerTitle}>{title}</Text>
       </View>
 
-      <View style={globalStyles.backButton}>
-        <Pressable onPress={() => navigation.goBack()}>
-          <Text style={globalStyles.backButtonText}>Regresar</Text>
-        </Pressable>
-      </View>
+      <BackButton />
     </>
   );
 };

@@ -62,18 +62,28 @@ export const globalStyles = StyleSheet.create({
     },
     backButton: {
         position: 'absolute',
+        top: 14,
+        left: 14,
+
         zIndex: 999,
-        elevation: 9,
-        top: 10,
-        left: 10,
-    },
-    backButtonText: {
-        color: 'white',
-        fontSize: 25,
-        fontWeight: 'bold',
-        textShadowColor: 'rgba(0, 0, 0, 0.55)',
-        textShadowOffset: { width: -1, height: 1 },
-        textShadowRadius: 10,
+        elevation: 10,
+
+        width: 44,
+        height: 44,
+        borderRadius: 22,
+
+        justifyContent: 'center',
+        alignItems: 'center',
+
+        backgroundColor: 'rgba(0,0,0,0.45)',
+
+        shadowColor: '#000',
+        shadowOffset: {
+            width: 0,
+            height: 4,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 6,
     },
 
     // ─── MovieHeader ──────────────────────────────────────────────
