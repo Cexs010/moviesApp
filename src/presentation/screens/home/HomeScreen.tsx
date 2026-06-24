@@ -4,6 +4,7 @@ import { useMovies } from '../../hooks/useMovies';
 import { PosterCarousel } from '../../components/movies/PosterCarousel';
 import { HorizontalCarousel } from '../../components/movies/HorizontalCarousel';
 import { FullScreenLoader } from '../../components/loaders/FullScreenLoader';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 const HomeScreen = () => {
   const {
@@ -14,6 +15,7 @@ const HomeScreen = () => {
     upComing,
     popularNextPage,
   } = useMovies();
+  const { top, bottom } = useSafeAreaInsets();
 
   if (isLoading) {
     return <FullScreenLoader />;
@@ -21,8 +23,8 @@ const HomeScreen = () => {
 
   return (
     <ScrollView
-      style={globalStyles.container}
-      contentContainerStyle={{ paddingBottom: 32 }}
+      style={[globalStyles.container, { paddingTop: top }]}
+      contentContainerStyle={{ paddingBottom: bottom + 30 }}
     >
       <PosterCarousel movies={nowPlaying} />
       <HorizontalCarousel

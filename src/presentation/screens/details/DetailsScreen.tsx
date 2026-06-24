@@ -5,12 +5,14 @@ import { useMovie } from '../../hooks/useMovie';
 import { MovieHeader } from '../../components/movie/MovieHeader';
 import { MovieDetails } from '../../components/movie/MovieDetails';
 import { FullScreenLoader } from '../../components/loaders/FullScreenLoader';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 interface Props extends NativeStackScreenProps<RootStackParams, 'details'> {}
 
 const DetailsScreen = ({ route }: Props) => {
   const { movieId } = route.params;
   const { isLoading, movie, cast } = useMovie(movieId);
+  const { bottom } = useSafeAreaInsets();
 
   if (isLoading) {
     return <FullScreenLoader />;
@@ -20,7 +22,7 @@ const DetailsScreen = ({ route }: Props) => {
   if (!cast) return null;
 
   return (
-    <ScrollView contentContainerStyle={{ paddingBottom: 32 }}>
+    <ScrollView contentContainerStyle={{ paddingBottom: bottom + 30 }}>
       <MovieHeader
         poster={movie.poster}
         originalTitle={movie.originalTitle}

@@ -1,7 +1,6 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from '../screens/home/HomeScreen';
 import DetailsScreen from '../screens/details/DetailsScreen';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Platform, View } from 'react-native';
 
 export type RootStackParams = {
@@ -12,9 +11,8 @@ export type RootStackParams = {
 const Stack = createNativeStackNavigator<RootStackParams>();
 
 export const StackNavigation = () => {
-  const { top, bottom } = useSafeAreaInsets();
   return (
-    <View style={{ flex: 1, marginTop: top, marginBottom: bottom }}>
+    <View style={{ flex: 1 }}>
       <Stack.Navigator
         screenOptions={{
           headerShown: false,
